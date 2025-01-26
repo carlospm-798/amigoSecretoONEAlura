@@ -8,6 +8,11 @@
 
 let nombresAmigos = [];
 
+function numeroAleatorio(min, max) {
+    let numeroResultante = Math.floor(Math.random()*max) + min;
+    return numeroResultante;
+}
+
 function asignarTextoElemento(elemento, texto) {
     let titulo = document.querySelector(elemento);
     titulo.innerHTML = texto;
@@ -41,4 +46,21 @@ function mostrarAmigos(nombresValidos) {
     })
 
     return;
+}
+
+function sortearAmigo() {
+    let mensaje = document.getElementById('resultado');
+
+    if (nombresAmigos.length == 1) {
+        limpiarLista();
+        mensaje.innerHTML = nombresAmigos[0];
+    } else if (nombresAmigos.length > 1) {
+        limpiarLista();
+        mensaje.innerHTML = nombresAmigos[numeroAleatorio(0, nombresAmigos.length)];
+    }
+}
+
+function limpiarLista() {
+    let lista = document.getElementById('listaAmigos');
+    lista.innerHTML = '';
 }
